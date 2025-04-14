@@ -46,8 +46,10 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
   void navigateToOnBoarding() {
     Future.delayed(Duration(seconds: 3), () {
       if (mounted) {
-        Navigator.push(
+        Navigator.pushAndRemoveUntil(
+        
           context,
+          
           PageRouteBuilder(
             transitionDuration: Duration(milliseconds: 1505),
             pageBuilder: (context, animation, secondaryAnimation) => CurrencyExchangePage(),
@@ -57,7 +59,10 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
                 child: child,
               );
             },
+            
           ),
+          
+          (route) => false,
         );
       }
     });
