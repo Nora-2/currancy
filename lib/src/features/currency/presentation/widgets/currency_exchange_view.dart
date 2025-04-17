@@ -87,6 +87,8 @@ class _CurrencyExchangeViewState extends State<CurrencyExchangeView> {
         Text('$label${AppString.currency}'),
         const SizedBox(height: 8),
         DropdownButtonFormField<String>(
+          dropdownColor: AppColors.white,
+          
           iconEnabledColor: AppColors.primaryColor,
           value: isFromCurrency ? _fromCurrency : _targetCurrency,
           items: Constants.currencies.map((currency) {
@@ -105,8 +107,17 @@ class _CurrencyExchangeViewState extends State<CurrencyExchangeView> {
               }
             });
           },
-          decoration: const InputDecoration(
+          decoration:  InputDecoration(
             border: OutlineInputBorder(),
+            
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: AppColors.primaryColor),
+            ),
+            focusColor: AppColors.white,
+            
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: AppColors.black),
+            ),
             contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
           ),
         ),
@@ -174,6 +185,7 @@ class _CurrencyExchangeViewState extends State<CurrencyExchangeView> {
 
   void _showDatePicker(bool isStartDate) async {
     final DateTime? picked = await showDatePicker(
+      
       context: context,
       initialDate: isStartDate ? _startDate : _endDate,
       firstDate: DateTime(2000),
